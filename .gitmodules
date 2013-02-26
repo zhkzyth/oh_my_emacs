@@ -1,0 +1,6 @@
+[submodule "emacs.d/vendor/maxframe.el"]
+	path = emacs.d/vendor/maxframe.el
+	url = git://github.com/rmm5t/maxframe.el.git
+[submodule "emacs.d/vendor/coffee-mode"]
+	path = emacs.d/vendor/coffee-mode
+	url = git://github.com/defunkt/coffee-mode.git
