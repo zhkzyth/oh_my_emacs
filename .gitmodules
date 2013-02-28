@@ -94,3 +94,21 @@
 [submodule "emacs.d/vendor/dirtree"]
 	path = emacs.d/vendor/dirtree
 	url = https://github.com/zkim/emacs-dirtree.git
+[submodule "emacs.d/vendor/evil-leader"]
+	path = emacs.d/vendor/evil-leader
+	url = https://github.com/cofi/evil-leader.git
+[submodule "emacs.d/vendor/evil-org-mode"]
+	path = emacs.d/vendor/evil-org-mode
+	url = https://github.com/edwtjo/evil-org-mode.git
+[submodule "emacs.d/vendor/evil-nerd-commenter"]
+	path = emacs.d/vendor/evil-nerd-commenter
+	url = https://github.com/redguardtoo/evil-nerd-commenter.git
+[submodule "emacs.d/vendor/evil-numbers"]
+	path = emacs.d/vendor/evil-numbers
+	url = https://github.com/cofi/evil-numbers.git
+[submodule "emacs.d/vendor/helm"]
+	path = emacs.d/vendor/helm
+	url = https://github.com/emacs-helm/helm.git
+[submodule "emacs.d/vendor/helm-cmd-t"]
+	path = emacs.d/vendor/helm-cmd-t
+	url = https://github.com/lewang/helm-cmd-t.git
