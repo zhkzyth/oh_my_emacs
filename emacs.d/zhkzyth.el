@@ -1,55 +1,55 @@
 (add-to-list 'load-path "~/.emacs.d/vendor")
 
 ;set env
-(load "rmm5t/env")
+(load "non_forked/env")
 ;default value and setting.
-(load "rmm5t/global")
+(load "non_forked/global")
 ;frequently used funcs
-(load "rmm5t/defuns")
+(load "non_forked/defuns")
 ;global key bindings
-(load "rmm5t/bindings")
+(load "non_forked/bindings")
 ;tab indent and completion stuffs.
-(load "rmm5t/tabs")
+(load "non_forked/tabs")
 ;reenable some default disabled vars
-(load "rmm5t/disabled")
+(load "non_forked/disabled")
 ;global fonts settings
-(load "rmm5t/fonts")
+(load "non_forked/fonts")
 ;use utf-8 encode
-(load "rmm5t/utf-8")
+(load "non_forked/utf-8")
 ;repeate create the scratch buffer
-(load "rmm5t/scratch")
+(load "non_forked/scratch")
 ;define some shell grep command to help the search
-(load "rmm5t/grep")
+(load "non_forked/grep")
 ;set the output gui
-(load "rmm5t/diff")
+(load "non_forked/diff")
 ;config the ido plugin
-(load "rmm5t/ido")
+(load "non_forked/ido")
 ;config the dired plugin
-(load "rmm5t/dired")
+(load "non_forked/dired")
 ;recent files
-(load "rmm5t/recentf")
+(load "non_forked/recentf")
 ;kill region
-(load "rmm5t/rectangle")
+(load "non_forked/rectangle")
 ;org-mode
-(load "rmm5t/org")
+(load "non_forked/org")
 ;folding methods
-(load "rmm5t/zoom")
+(load "non_forked/zoom")
 ;flymake GUI
-(load "rmm5t/flymake")
+(load "non_forked/flymake")
 ;config the js mode
-(load "rmm5t/javascript")
+(load "non_forked/javascript")
 ;config ruby mode with ri-nari plugin
-(load "rmm5t/ri-emacs")
+(load "non_forked/ri-emacs")
 ;server-mode ?
-(load "rmm5t/server-mode")
+(load "non_forked/server-mode")
 ;cofig shell mode
-(load "rmm5t/shell-mode")
+(load "non_forked/shell-mode")
 
-;; (load "rmm5t/hl-line")
-;; (load "rmm5t/iswitchb")
+;; (load "non_forked/hl-line")
+;; (load "non_forked/iswitchb")
 
 ;my personal color-theme
-(vendor 'color-theme)
+;(vendor 'color-theme)
 ;
 (vendor 'ruby-mode)
 ;
@@ -142,5 +142,5 @@
 ;; (vendor 'ruby-electric 'ruby-electric-mode)
 ;; (vendor 'auctex)
 
-(setq custom-file "~/.emacs.d/rmm5t/custom.el")
+(setq custom-file "~/.emacs.d/non_forked/custom.el")
 (load custom-file 'noerror) ;;well , the color theme is not the one~
