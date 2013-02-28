@@ -85,3 +85,12 @@
 [submodule "emacs.d/vendor/auctex"]
 	path = emacs.d/vendor/auctex
 	url = git://github.com/zhkzyth/auctex.git
+[submodule "emacs.d/vendor/evil"]
+	path = emacs.d/vendor/evil
+	url = https://github.com/emacsmirror/evil.git
+[submodule "emacs.d/vendor/evil-surround"]
+	path = emacs.d/vendor/evil-surround
+	url = https://github.com/timcharper/evil-surround.git
+[submodule "emacs.d/vendor/dirtree"]
+	path = emacs.d/vendor/dirtree
+	url = https://github.com/zkim/emacs-dirtree.git
