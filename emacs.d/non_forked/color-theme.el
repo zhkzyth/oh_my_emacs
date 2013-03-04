@@ -7,7 +7,7 @@
 ;(color-theme-charcoal-black)
 
 ;;; temp hack for color theme
-(add-to-list 'load-path "/home/zhkzyth/.dotfiles/emacs.d/vendor/color-theme-6.6.0/")
+(add-to-list 'load-path "/home/zhkzyth/codeRep/oh_my_emacs/vendor/color-theme-6.6.0/")
 (require 'color-theme)
 (eval-after-load "color-theme"
   '(progn

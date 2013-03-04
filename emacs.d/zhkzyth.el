@@ -45,7 +45,7 @@
 ;cofig shell mode
 (load "non_forked/shell-mode")
 ;my personal color-theme
-(load "non_forked/color-theme")
+;(load "non_forked/color-theme")
 
 ;; (load "non_forked/hl-line")
 ;; (load "non_forked/iswitchb")
