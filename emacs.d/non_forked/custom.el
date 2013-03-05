@@ -232,3 +232,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+;; auto start the speed Bar
+(global-set-key (kbd "M-b") 'sr-speedbar-toggle)
+

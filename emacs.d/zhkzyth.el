@@ -49,6 +49,7 @@
 
 ;; (load "non_forked/hl-line")
 ;; (load "non_forked/iswitchb")
+(load "non_forked/sr-speedbar")
 
 
 ;
