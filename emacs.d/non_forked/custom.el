@@ -236,3 +236,5 @@
 ;; auto start the speed Bar
 (global-set-key (kbd "M-b") 'sr-speedbar-toggle)
 
+;; set the font-size
+(set-face-attribute 'default nil :height 120)
