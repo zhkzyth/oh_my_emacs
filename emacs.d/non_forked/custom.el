@@ -210,6 +210,8 @@
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
  '(custom-enabled-themes nil))
+ ;'(custom-enabled-themes (quote (tango-dark)))
+ '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -222,3 +224,35 @@
 
 ;; set the font-size
 (set-face-attribute 'default nil :height 120)
+
+;; If emacs is run in a terminal, the clipboard- functions have no
+;; effect. Instead, we use of xsel, see
+;; http://www.vergenet.net/~conrad/software/xsel/ -- "a command-line
+;; program for getting and setting the contents of the X selection"
+(unless window-system
+ (when (getenv "DISPLAY")
+  ;; Callback for when user cuts
+  (defun xsel-cut-function (text &optional push)
+    ;; Insert text to temp-buffer, and "send" content to xsel stdin
+    (with-temp-buffer
+      (insert text)
+      ;; I prefer using the "clipboard" selection (the one the
+      ;; typically is used by c-c/c-v) before the primary selection
+      ;; (that uses mouse-select/middle-button-click)
+      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
+  ;; Call back for when user pastes
+  (defun xsel-paste-function()
+    ;; Find out what is current selection by xsel. If it is different
+    ;; from the top of the kill-ring (car kill-ring), then return
+    ;; it. Else, nil is returned, so whatever is in the top of the
+    ;; kill-ring will be used.
+    (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
+      (unless (string= (car kill-ring) xsel-output)
+	xsel-output )))
+  ;; Attach callbacks to hooks
+  (setq interprogram-cut-function 'xsel-cut-function)
+  (setq interprogram-paste-function 'xsel-paste-function)
+  ;; Idea from
+  ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
+  ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
+ ))
