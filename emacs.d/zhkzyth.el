@@ -125,7 +125,6 @@
 ;pycomplete
 (vendor 'pycomplete)
 
-
 ;for the evil Project
 (vendor 'undo-tree)
 ;add the fucking evil support
@@ -139,7 +138,8 @@
 (vendor 'evil-leader)
 ;add evil-nerd-commenter support
 (vendor 'evil-nerd-commenter)
-
+;add scss mode support
+(vendor 'scss-mode)
 
 ;; (vendor 'ruby-electric 'ruby-electric-mode)
 ;; (vendor 'auctex)
