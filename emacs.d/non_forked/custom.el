@@ -10,12 +10,6 @@
 ;;; GUI
 (set-face-foreground 'font-lock-comment-face "#ff7f24")  ;M-x set-face-foreground
 
-;;; theme support
-
-;;; line num support
-;; (add-to-list 'load-path "/home/zhkzyth/emacs/line-num.el")
-;; (require 'linum)            ;M-x linum-mode
-
 ;;; common-lisp setting
 ;;; nima~~~kengdie a~~zhege shi clisp de jiexiqi a qin!!!
 ;; (setq infreior-lisp-program "/usr/bin/sbcl");
@@ -45,13 +39,6 @@
                  '(progn
                    (define-key lisp-mode-map (kbd "TAB") 'lisp-indent-or-complete)))
 ;end of defun lisp-indent....
-
-;; Yank reverse
-;(defun yank-pop-forwards (arg)
-  ;(interactive "p")
-  ;(yank-pop (- arg)))
-
-;(global-set-key "\M-Y" 'yank-pop-forwards) ; M-Y (Meta-Shift-Y)'"")""))
 
 (setq path-to-etags "/usr/bin/etags") ;; <- your ctags path here
 
@@ -221,8 +208,10 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(custom-enabled-themes (quote (tango-dark)))
- '(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby")))))
+ '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
+ '(custom-enabled-themes nil))
+ ;'(custom-enabled-themes (quote (tango-dark)))
+ ;'(safe-local-variable-values (quote ((encoding . utf-8) (ruby-compilation-executable . "ruby") (ruby-compilation-executable . "ruby1.8") (ruby-compilation-executable . "ruby1.9") (ruby-compilation-executable . "rbx") (ruby-compilation-executable . "jruby")))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
