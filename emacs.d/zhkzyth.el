@@ -52,6 +52,7 @@
 (load "non_forked/sr-speedbar")
 
 
+
 ;
 (vendor 'ruby-mode)
 ;
@@ -140,9 +141,16 @@
 (vendor 'evil-nerd-commenter)
 ;add scss mode support
 (vendor 'scss-mode)
+;add scss mode support
+;(vendor 'flymake)
 
 ;; (vendor 'ruby-electric 'ruby-electric-mode)
 ;; (vendor 'auctex)
+
+;; python lint
+;; TODO make clear why the position so important
+(load "non_forked/python-pep8")
+(load "non_forked/python-pylint")
 
 (setq custom-file "~/.emacs.d/non_forked/custom.el")
 (load custom-file 'noerror) ;;well , the color theme is not the one~

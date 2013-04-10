@@ -267,3 +267,6 @@
   ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
   ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
  ))
+
+;; auto reload when buffer Change
+(global-auto-revert-mode t)
