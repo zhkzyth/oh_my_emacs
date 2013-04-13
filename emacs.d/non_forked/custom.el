@@ -6,6 +6,7 @@
 
 ;;; files
 (setq make-backup-files nil) ;do not backup files
+(setq create-lockfiles nil) ;do not create the tmp file
 
 ;;; GUI
 (set-face-foreground 'font-lock-comment-face "#ff7f24")  ;M-x set-face-foreground
