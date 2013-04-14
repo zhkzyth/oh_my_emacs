@@ -35,7 +35,7 @@
 ;folding methods
 (load "non_forked/zoom")
 ;flymake GUI
-(load "non_forked/flymake")
+;(load "non_forked/flymake")
 ;config the js mode
 (load "non_forked/javascript")
 ;config ruby mode with ri-nari plugin
@@ -46,12 +46,11 @@
 (load "non_forked/shell-mode")
 ;my personal color-theme
 ;(load "non_forked/color-theme")
-
 ;; (load "non_forked/hl-line")
 ;; (load "non_forked/iswitchb")
 (load "non_forked/sr-speedbar")
-
-
+;; smart-compile
+(load "non_forked/smart-compile")
 
 ;
 (vendor 'ruby-mode)
@@ -141,6 +140,8 @@
 (vendor 'evil-nerd-commenter)
 ;add scss mode support
 (vendor 'scss-mode)
+;add less mode support
+(vendor 'less-mode)
 ;add scss mode support
 ;(vendor 'flymake)
 
