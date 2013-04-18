@@ -262,3 +262,23 @@
 
 ;; auto reload when buffer Change
 (global-auto-revert-mode t)
+
+;; fuking cool irc
+(setq erc-default-coding-system '(utf-8 utf-8))
+(setq erc-encoding-coding-alist '(("#linuxfire" chiese-iso-8bit)))
+(setq erc-nick "zhkzyth"
+      erc-user-full-name "zhkzyth")
+(erc-autojoin-mode 1)
+(setq erc-autojoin-channels-alist 
+ '((
+   "oftc.net"
+   "#debian-zh"
+   "#emacs-cn"
+       )))
+(erc-match-mode 1)
+(setq erc-keywords '("emacs" "python"))
+(setq erc-pals '("rms"))
+(setq erc-ignore-list nil)
+(setq erc-hide-list
+ '("JOIN" "PART" "QUIT" "MODE"))
+
