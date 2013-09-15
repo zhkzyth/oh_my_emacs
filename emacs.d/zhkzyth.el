@@ -122,6 +122,8 @@
 ;auto-complete
 (vendor 'auto-complete)
 
+;hack for pymacs
+(vendor 'pymacs)
 ;pycomplete
 (vendor 'pycomplete)
 

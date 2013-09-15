@@ -233,32 +233,71 @@
 ;; http://www.vergenet.net/~conrad/software/xsel/ -- "a command-line
 ;; program for getting and setting the contents of the X selection"
 (unless window-system
- (when (getenv "DISPLAY")
-  ;; Callback for when user cuts
-  (defun xsel-cut-function (text &optional push)
-    ;; Insert text to temp-buffer, and "send" content to xsel stdin
+  (when (getenv "DISPLAY")
+
+   ;; Callback for when user cuts
+    (defun xsel-cut-function (text &optional push)
+    ;;; Insert text to temp-buffer, and "send" content to xsel stdin
     (with-temp-buffer
-      (insert text)
-      ;; I prefer using the "clipboard" selection (the one the
-      ;; typically is used by c-c/c-v) before the primary selection
-      ;; (that uses mouse-select/middle-button-click)
-      (call-process-region (point-min) (point-max) "xsel" nil 0 nil "--clipboard" "--input")))
-  ;; Call back for when user pastes
-  (defun xsel-paste-function()
-    ;; Find out what is current selection by xsel. If it is different
-    ;; from the top of the kill-ring (car kill-ring), then return
-    ;; it. Else, nil is returned, so whatever is in the top of the
-    ;; kill-ring will be used.
-    (let ((xsel-output (shell-command-to-string "xsel --clipboard --output")))
-      (unless (string= (car kill-ring) xsel-output)
-	xsel-output )))
-  ;; Attach callbacks to hooks
-  (setq interprogram-cut-function 'xsel-cut-function)
-  (setq interprogram-paste-function 'xsel-paste-function)
-  ;; Idea from
-  ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
-  ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
- ))
+    (insert text)
+    (cond 
+     ((eq system-type 'cygwin) (set 'cmd "getclip"))
+     ((eq system-type 'darwin) (set 'cmd "pbcopy"))
+     (t (set 'cmd "xsel -ob"))
+     )
+    (message "copy content to clipboard")
+    (call-process-region (point-min) (point-max) cmd nil 0 nil "--clipboard" "--input")))
+
+    ;;; Call back for when user pastes
+    (defun xsel-paste-function()
+    ;;; Find out what is current selection by xsel. If it is different
+    ;;; from the top of the kill-ring (car kill-ring), then return
+    ;;; it. Else, nil is returned, so whatever is in the top of the
+    ;;; kill-ring will be used.
+    (cond 
+     ((eq system-type 'cygwin) (set 'cmd "getclip"))
+     ((eq system-type 'darwin) (set 'cmd "pbpaste"))
+     (t (set 'cmd "xsel -ob"))
+     )
+    (message "paste content from clipboard")
+    (let ((xsel-output (shell-command-to-string (concat cmd  " --clipboard --output"))))
+    (unless (string= (car kill-ring) xsel-output)
+    xsel-output )))
+    ;; Idea from
+    ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
+    ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
+
+    ;;interactive copy/paste
+    (defun copy-to-x-clipboard ()
+      (interactive)
+      (if (region-active-p)
+        (progn
+          ; my clipboard manager only intercept CLIPBOARD
+          (shell-command-on-region (region-beginning) (region-end)
+                                   (cond
+                                     ((eq system-type 'cygwin) "putclip")
+                                     ((eq system-type 'darwin) "pbcopy")
+                                     (t "xsel -ib")
+                                     )
+                                   )
+          (message "Yanked region to clipboard!")
+          (deactivate-mark))
+        (message "No region active; can't yank to clipboard!")))
+
+    (defun paste-from-x-clipboard()
+      (interactive)
+      (shell-command
+        (cond
+          ((eq system-type 'cygwin) "getclip")
+          ((eq system-type 'darwin) "pbpaste")
+          (t "xsel -ob")
+          )
+        1))
+
+    ;; Attach callbacks to hooks
+    (setq interprogram-cut-function 'xsel-cut-function)
+    (setq interprogram-paste-function 'xsel-paste-function)
+    ))
 
 ;; auto reload when buffer Change
 (global-auto-revert-mode t)
@@ -282,3 +321,11 @@
 (setq erc-hide-list
  '("JOIN" "PART" "QUIT" "MODE"))
 
+;;; window movement
+;;; tmp hack for the iterm2 
+(global-set-key (kbd "ESC <up>") 'windmove-up)
+(global-set-key (kbd "ESC <down>") 'windmove-down)
+(global-set-key (kbd "ESC <right>") 'windmove-right)
+(global-set-key (kbd "ESC <left>") 'windmove-left)
+
+(global-set-key (kbd "<f1>") 'shell)
