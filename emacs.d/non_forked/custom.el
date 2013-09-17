@@ -6,21 +6,12 @@
 
 ;;; files
 (setq make-backup-files nil) ;do not backup files
-;(setq create-lockfiles nil) ;do not create the tmp file.not work before 24.2
+(setq create-lockfiles nil) ;do not create the tmp file.not work before 24.2
 (setq backup-inhibited t)  ;disable backup
 (setq auto-save-default nil) ;disable auto save
 
 ;;; GUI
 (set-face-foreground 'font-lock-comment-face "#ff7f24")  ;M-x set-face-foreground
-
-;;; common-lisp setting
-;;; nima~~~kengdie a~~zhege shi clisp de jiexiqi a qin!!!
-;; (setq infreior-lisp-program "/usr/bin/sbcl");
-;; (add-to-list 'load-path "/usr/share/common-lisp/source/slime")
-;(require 'slime);
-;(slime-setup '(slime-fancy));
-;(slime)			    ;M-x slime
-
 
 ;;; Always do syntax highlighting
 (global-font-lock-mode 1)
@@ -28,9 +19,6 @@
 (setq show-paren-delay 0
  show-paren-style 'parenthesis)
 (show-paren-mode 1)
-;;; This is the binary name of my scheme implementation
-(setq scheme-program-name "mit-scheme")
-
 
 ;auto complete
 (defun lisp-indent-or-complete (&optional arg)
@@ -329,3 +317,8 @@
 (global-set-key (kbd "ESC <left>") 'windmove-left)
 
 (global-set-key (kbd "<f1>") 'shell)
+(global-set-key (kbd "<f2>") 'imenu)
+
+;;;evil-leader support 
+(evil-leader/set-leader ",")
+(evil-leader/set-key "/" 'evilnc-comment-or-uncomment-lines)

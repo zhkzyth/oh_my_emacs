@@ -1,22 +1,5 @@
 ;;; Global key bindigns
 
-;; How to Define Keyboard Shortcuts in Emacs
-;; http://xahlee.org/emacs/keyboard_shortcuts.html
-
-;; Window manipulation
-(global-set-key [(control kp-6)] 'enlarge-window-horizontally)
-(global-set-key [(control kp-4)] 'shrink-window-horizontally)
-(global-set-key [(control kp-8)] 'enlarge-window)
-(global-set-key [(control kp-2)] 'shrink-window)
-
-;; Window switch
-;; window movement
-(global-set-key [M-left] 'windmove-left)          ; move to left windnow
-(global-set-key [M-right] 'windmove-right)        ; move to right window
-(global-set-key [M-up] 'windmove-up)              ; move to upper window
-(global-set-key [M-down] 'windmove-down)          ; move to downer window
-
-
 ;; Find stuff
 ;; not binding for the f2 has been used
 (global-set-key [(f3)]              'ack-default-directory)
@@ -25,14 +8,6 @@
 (global-set-key [(meta f3)]         'find-name-dired)
 (global-set-key [(shift f3)]        'occur)
 
-;; Keyboard macros
-(global-set-key [(shift f4)] 'kmacro-start-macro-or-insert-counter)
-;; (global-set-key [(f4)]    'kmacro-end-or-call-macro)  ;; already defined
-
-;; Refresh-like
-(global-set-key [(f5)]         'revert-buffer)
-(global-set-key [(control f5)] 'revbufs)
-
 ;; Indenting and alignment
 (global-set-key [(f8)]         'indent-region)
 (global-set-key [(control f8)] 'align)
@@ -40,8 +15,6 @@
 (global-set-key [(meta f8)]    'align-regexp)
 
 ;; Version control and change related
-;(global-set-key [(control f9)]      'rails-svn-status-into-root)  ;; Move to rails mode?
-;(global-set-key [(control meta f9)] (lambda () (interactive) (svn-status default-directory)))
 (global-set-key [(control f9)] (lambda () (interactive) (magit-status default-directory)))
 (global-set-key [(f9)]         (lambda () (interactive) (magit-status default-directory)))
 (global-set-key [(meta f9)]    'autotest-switch)  ;; Move to ruby/rails mode?
@@ -75,28 +48,27 @@
 ;; Find matching parens
 (global-set-key (kbd "C-'") 'match-paren)
 
-;; Easy inserts
-(global-set-key (kbd "C-.") 'insert-arrow)
-
 ;; ibuffer > list-buffers
-(global-set-key (kbd "C-x C-b") 'ibuffer)
+(global-set-key (kbd "C-x C-x") 'ibuffer)
 
 ;; Easier buffer killing
 (global-unset-key (kbd "M-k"))
 (global-set-key (kbd "M-k") 'kill-this-buffer)
 
-;; Improved navigation and editing (assumes misc.el)
-(global-set-key (kbd "M-Z") 'zap-up-to-char)
-(global-set-key (kbd "M-F") 'forward-to-word)
-(global-set-key (kbd "M-B") 'backward-to-word)
+;; Window switch
+;; window movement
+(global-set-key [M-left] 'windmove-left)          ; move to left windnow
+(global-set-key [M-right] 'windmove-right)        ; move to right window
+(global-set-key [M-up] 'windmove-up)              ; move to upper window
+(global-set-key [M-down] 'windmove-down)          ; move to downer window
 
-;; Personal textmate.el bindings
-;(global-set-key (kbd "C-c f") 'textmate-goto-file)
-;(global-set-key [(control return)] 'textmate-next-line)
-
-;; Personal pre keybinding for buffer-move
 ;; Noted:default value is <C-*arrow>,so no need to add more
-(global-set-key (kbd "<C-S-up>")     'buf-move-up)
-(global-set-key (kbd "<C-S-down>")   'buf-move-down)
-(global-set-key (kbd "<C-S-M-left>")   'buf-move-left)
-(global-set-key (kbd "<C-S-M-right>")  'buf-move-right)
+(define-prefix-command 'ctl-w-map)
+(global-set-key (kbd "C-w") 'ctl-w-map)
+
+(global-set-key (kbd "C-w <up>")     'buf-move-up)
+(global-set-key (kbd "C-w <down>")   'buf-move-down)
+(global-set-key (kbd "C-w <left>")   'buf-move-left)
+(global-set-key (kbd "C-w <right>")  'buf-move-right)
+
+
