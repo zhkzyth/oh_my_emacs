@@ -91,7 +91,7 @@
 ;
 (vendor 'rcodetools    'xmp)
 ;
-(vendor 'yasnippet)
+;(vendor 'yasnippet)
 ;
 (vendor 'jekyll)
 ;
@@ -105,12 +105,12 @@
 ;
 (vendor 'buffer-move)
 ;
-(vendor 'ibus)
+;(vendor 'ibus)
 ;add the visual tree support
-(vendor 'tree-mode)
-(vendor 'windata)
+;(vendor 'tree-mode)
+;(vendor 'windata)
 ;so here is the dir tree support
-(vendor 'dirtree)
+;(vendor 'dirtree)
 
 ;helm framework
 (vendor 'helm)
@@ -143,10 +143,13 @@
 ;add less mode support
 (vendor 'less-mode)
 ;add scss mode support
-;(vendor 'flymake)
+(vendor 'flymake)
 
-;; (vendor 'ruby-electric 'ruby-electric-mode)
-;; (vendor 'auctex)
+(vendor 'ruby-electric 'ruby-electric-mode)
+
+;;; NOTE: need to complie the source code of auctex,
+;;; so may do this when we use it actually
+;(vendor 'auctex)
 
 ;; python lint
 ;; TODO make clear why the position so important

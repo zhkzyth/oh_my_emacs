@@ -1,5 +1,9 @@
 ;;; Global key bindigns
 
+;;
+(global-set-key (kbd "<f1>") 'shell)
+(global-set-key (kbd "<f2>") 'imenu)
+
 ;; Find stuff
 ;; not binding for the f2 has been used
 (global-set-key [(f3)]              'ack-default-directory)
@@ -8,16 +12,9 @@
 (global-set-key [(meta f3)]         'find-name-dired)
 (global-set-key [(shift f3)]        'occur)
 
-;; Indenting and alignment
-(global-set-key [(f8)]         'indent-region)
-(global-set-key [(control f8)] 'align)
-(global-set-key [(shift f8)]   'align-current)
-(global-set-key [(meta f8)]    'align-regexp)
-
 ;; Version control and change related
 (global-set-key [(control f9)] (lambda () (interactive) (magit-status default-directory)))
 (global-set-key [(f9)]         (lambda () (interactive) (magit-status default-directory)))
-(global-set-key [(meta f9)]    'autotest-switch)  ;; Move to ruby/rails mode?
 
 ;; Map the window manipulation keys to meta 0, 1, 2, o
 (global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
@@ -25,6 +22,7 @@
 (global-set-key (kbd "M-1") 'delete-other-windows) ; was digit-argument
 (global-set-key (kbd "M-0") 'delete-window) ; was digit-argument
 (global-set-key (kbd "M-o") 'other-window) ; was facemenu-keymap
+
 ;; Replace dired's M-o
 (add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map (kbd "M-o") 'other-window))) ; was dired-omit-mode
 ;; Replace ibuffer's M-o
@@ -36,24 +34,8 @@
 (global-unset-key (kbd "C-x 0")) ; was delete-window
 (global-unset-key (kbd "C-x o")) ; was other-window
 
-;; Repeat
-(global-set-key [(control z)] 'repeat) ; was suspend-frame
-
 ;; Window navigation
 (windmove-default-keybindings 'meta)
-
-;; Mac OS X conventions
-(global-set-key (kbd "M-a") 'mark-whole-buffer) ; was backward-sentence.
-
-;; Find matching parens
-(global-set-key (kbd "C-'") 'match-paren)
-
-;; ibuffer > list-buffers
-(global-set-key (kbd "C-x C-x") 'ibuffer)
-
-;; Easier buffer killing
-(global-unset-key (kbd "M-k"))
-(global-set-key (kbd "M-k") 'kill-this-buffer)
 
 ;; Window switch
 ;; window movement
@@ -71,4 +53,44 @@
 (global-set-key (kbd "C-w <left>")   'buf-move-left)
 (global-set-key (kbd "C-w <right>")  'buf-move-right)
 
+;;; window movement
+;;; tmp hack for the iterm2
+(global-set-key (kbd "ESC <up>") 'windmove-up)
+(global-set-key (kbd "ESC <down>") 'windmove-down)
+(global-set-key (kbd "ESC <right>") 'windmove-right)
+(global-set-key (kbd "ESC <left>") 'windmove-left)
+
+;;;TODO move the funcs definition to somewhere
+;;; window size manager
+(defun halve-other-window-height ()
+  "Expand current window to use half of the other window's lines."
+  (interactive)
+  (enlarge-window (/ (window-height (next-window)) 2)))
+
+(defun halve-other-window-negative-height ()
+  "Expand current window to use half of the other window's lines."
+  (interactive)
+  (enlarge-window (/ (window-height (next-window)) -2)))
+
+(global-set-key (kbd "C-c <down>") 'halve-other-window-height)
+(global-set-key (kbd "C-c <up>") 'halve-other-window-negative-height)
+
+;; Mac OS X conventions
+(global-set-key (kbd "M-a") 'mark-whole-buffer) ; was backward-sentence.
+
+;; Find matching parens
+;(global-set-key (kbd "C-'") 'match-paren)
+
+;; ibuffer > list-buffers
+(global-set-key (kbd "C-x C-x") 'ibuffer)
+
+;; Easier buffer killing
+(global-unset-key (kbd "M-k"))
+(global-set-key (kbd "M-k") 'kill-this-buffer)
+
+;; auto start the speed Bar
+(global-set-key (kbd "M-b") 'imenu)
+
+;; funcking awesome helm-cmd-t
+(global-set-key (kbd "M-t") 'helm-cmd-t)
 
