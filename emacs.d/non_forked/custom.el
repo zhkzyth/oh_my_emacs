@@ -18,6 +18,8 @@
 
 ;;; set the font-size
 (set-face-attribute 'default nil :height 120)
+;;;auto pair
+(autopair-global-mode) ;; to enable in all buffers
 
 ;;; Always do syntax highlighting
 (global-font-lock-mode 1)
@@ -76,7 +78,7 @@
 ;(ad-activate 'previous-line)
 
 ;; ibus support for linux like ubuntu
-(cond 
+(cond
   ((eq system-type 'cygwin) (
  (add-hook 'after-init-hook 'ibus-mode-on)
  (global-set-key (kbd "C-=") 'ibus-toggle) ;;这里既是绑定上面设置的C+=快捷键到ibus中
@@ -134,7 +136,7 @@
     ;;; Insert text to temp-buffer, and "send" content to xsel stdin
     (with-temp-buffer
     (insert text)
-    (cond 
+    (cond
      ((eq system-type 'cygwin) (set 'cmd "getclip"))
      ((eq system-type 'darwin) (set 'cmd "pbcopy"))
      (t (set 'cmd "xsel -ob"))
@@ -148,7 +150,7 @@
     ;;; from the top of the kill-ring (car kill-ring), then return
     ;;; it. Else, nil is returned, so whatever is in the top of the
     ;;; kill-ring will be used.
-    (cond 
+    (cond
      ((eq system-type 'cygwin) (set 'cmd "getclip"))
      ((eq system-type 'darwin) (set 'cmd "pbpaste"))
      (t (set 'cmd "xsel -ob"))
@@ -199,7 +201,7 @@
 (setq erc-nick "zhkzyth"
       erc-user-full-name "zhkzyth")
 (erc-autojoin-mode 1)
-(setq erc-autojoin-channels-alist 
+(setq erc-autojoin-channels-alist
  '((
    "oftc.net"
    "#debian-zh"
@@ -212,6 +214,33 @@
 (setq erc-hide-list
  '("JOIN" "PART" "QUIT" "MODE"))
 
-;;;evil-leader support 
+;;;evil-leader support
 (evil-leader/set-leader ",")
 (evil-leader/set-key "/" 'evilnc-comment-or-uncomment-lines)
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;; cmake-mode
+(setq auto-mode-alist
+      (append '(("CMakeLists\\.txt\\'" . cmake-mode)
+                ("\\.cmake\\'" . cmake-mode))
+              auto-mode-alist))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;; ;;;;;;;;;;;;;;;;;;
+;;; erc-mode
+(setq erc-default-coding-system '(utf-8 . utf-8))
+;;; auto login
+(erc-autojoin-mode 1)
+(setq erc-autojoin-channels-alist
+      '(("oftc.net"                 ; debian.org 是它的别名
+         "#debian-zh"
+         "#emacs-cn")
+          ("freenode.net"
+           "#emacs"
+           "#ubuntu-cn"
+           "#archlinux")
+          ))
+
+(setq erc-ignore-list nil)
+(setq erc-hide-list
+      '("JOIN" "PART" "QUIT" "MODE"))

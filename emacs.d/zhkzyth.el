@@ -36,8 +36,8 @@
 (load "non_forked/org")
 ;;folding methods
 (load "non_forked/zoom")
-;;flymake GUI
-;(load "non_forked/flymake")
+;;flymake
+(load "non_forked/flymake")
 ;;config the js mode
 (load "non_forked/javascript")
 ;;config ruby mode with ri-nari plugin
@@ -51,6 +51,15 @@
 (load "non_forked/sr-speedbar")
 ;;; smart-compile
 (load "non_forked/smart-compile")
+;;; for xcsope
+(load "non_forked/xcscope")
+;; auto-pair-mode
+(load "non_forked/autopair")
+;;; cmake-mode
+(load "non_forked/cmake-mode")
+;;; jam file mode
+(load "non_forked/jam-mode")
+
 
 ;;
 (vendor 'ruby-mode)
@@ -144,7 +153,7 @@
 (vendor 'scss-mode)
 ;;add less mode support
 (vendor 'less-mode)
-;;add scss mode support
+;;add flymake mode support
 (vendor 'flymake)
 
 (vendor 'ruby-electric 'ruby-electric-mode)

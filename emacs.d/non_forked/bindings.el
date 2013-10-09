@@ -94,3 +94,17 @@
 ;; funcking awesome helm-cmd-t
 (global-set-key (kbd "M-t") 'helm-cmd-t)
 
+;; backspace delete 
+(global-set-key (kbd "DEL") 'backward-delete-char)
+
+;; for irc or erc 
+
+(defun irc ()
+   "Connect to the freenode"
+   (interactive)
+   (erc :server "irc.freenode.net"
+        :port 6667
+        :nick "zhkzyth"
+        :password "qwe123qwe123"))
+ 
+ (global-set-key "\C-ci"  'irc)
