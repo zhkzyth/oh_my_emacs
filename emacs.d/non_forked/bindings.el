@@ -89,15 +89,15 @@
 (global-set-key (kbd "M-k") 'kill-this-buffer)
 
 ;; auto start the speed Bar
-(global-set-key (kbd "M-b") 'imenu)
+(global-set-key (kbd "M-b") 'helm-semantic-or-imenu)
 
 ;; funcking awesome helm-cmd-t
 (global-set-key (kbd "M-t") 'helm-cmd-t)
 
-;; backspace delete 
+;; backspace delete
 (global-set-key (kbd "DEL") 'backward-delete-char)
 
-;; for irc or erc 
+;; for irc or erc
 
 (defun irc ()
    "Connect to the freenode"
@@ -106,5 +106,9 @@
         :port 6667
         :nick "zhkzyth"
         :password "qwe123qwe123"))
- 
+
  (global-set-key "\C-ci"  'irc)
+
+
+;; for sr-speedbar-mode
+(global-set-key (kbd "<f5>") 'sr-speedbar-toggle)

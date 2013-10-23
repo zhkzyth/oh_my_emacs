@@ -15,5 +15,5 @@
 (setq ac-dwim t)
 (define-key ac-mode-map (kbd "C-<tab>") 'auto-complete)
 
-(add-to-list 'ac-dictionary-directories "/home/zhkzyth/.emacs.d/vendor/auto-complete/ac-dict")
+(add-to-list 'ac-dictionary-directories "~/.emacs.d/vendor/auto-complete/ac-dict")
 (ac-config-default)

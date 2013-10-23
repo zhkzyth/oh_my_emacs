@@ -57,9 +57,12 @@
 (load "non_forked/autopair")
 ;;; cmake-mode
 (load "non_forked/cmake-mode")
-;;; jam file mode
+;;;; jam file mode
 (load "non_forked/jam-mode")
-
+;;;; gtags mode
+;; (load "non_forked/gtags")
+;;;; erlang mode
+(load "non_forked/erlang-bk")
 
 ;;
 (vendor 'ruby-mode)
@@ -129,7 +132,7 @@
 (vendor 'helm-cmd-t)
 
 ;;auto-complete
-;(vendor 'auto-complete)
+(vendor 'auto-complete)
 
 ;;hack for pymacs
 (vendor 'pymacs)
@@ -155,8 +158,11 @@
 (vendor 'less-mode)
 ;;add flymake mode support
 (vendor 'flymake)
-
+;;;; 
 (vendor 'ruby-electric 'ruby-electric-mode)
+;;;; erlang mode
+;;; FIXME a bug
+;(vendor 'erlmode-start)
 
 ;;;; NOTE: need to complie the source code of auctex,
 ;;;; so may do this when we use it actually

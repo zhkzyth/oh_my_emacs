@@ -20,12 +20,14 @@
 (set-face-attribute 'default nil :height 120)
 ;;;auto pair
 (autopair-global-mode) ;; to enable in all buffers
-
+;;; linu-num
+(global-linum-mode 1)
+:
 ;;; Always do syntax highlighting
 (global-font-lock-mode 1)
 ;;; Also highlight parens
 (setq show-paren-delay 0
- show-paren-style 'parenthesis)
+      show-paren-style 'parenthesis)
 (show-paren-mode 1)
 
 ;;;  ETAGS related
@@ -36,59 +38,59 @@
   (interactive "DDirectory: ")
   (let ((tags-revert-without-query t))
     (shell-command
-      (format "find %s -type f -regex '.*\.\\(c\\|h\\|el\\|scm\\|js\\)' | xargs etags -f %sTAGS" dir-name dir-name)
-      )))
+     (format "find %s -type f -regex '.*\.\\(c\\|h\\|el\\|scm\\|js\\)' | xargs etags -f %sTAGS" dir-name dir-name)
+     )))
 
 ;;;  Jonas.Jarnestrom<at>ki.ericsson.se A smarter
 ;;;  find-tag that automagically reruns etags when it cant find a
 ;;;  requested item and then makes a new try to locate it.
 ;;;  Fri Mar 15 09:52:14 2002
 
-;(defadvice find-tag (around refresh-etags activate)
-           ;"Rerun etags and reload tags if tag not found and redo find-tag.
-           ;If buffer is modified, ask about save before running etags."
-           ;(let ((extension (file-name-extension (buffer-file-name))))
-             ;(condition-case err
-                             ;ad-do-it
-                             ;(error (and (buffer-modified-p)
-                                         ;(not (ding))
-                                         ;(y-or-n-p "Buffer is modified, save it? ")
-                                         ;(save-buffer))
-                                    ;(er-refresh-etags extension)
-                                    ;ad-do-it))))
+                                        ;(defadvice find-tag (around refresh-etags activate)
+                                        ;"Rerun etags and reload tags if tag not found and redo find-tag.
+                                        ;If buffer is modified, ask about save before running etags."
+                                        ;(let ((extension (file-name-extension (buffer-file-name))))
+                                        ;(condition-case err
+                                        ;ad-do-it
+                                        ;(error (and (buffer-modified-p)
+                                        ;(not (ding))
+                                        ;(y-or-n-p "Buffer is modified, save it? ")
+                                        ;(save-buffer))
+                                        ;(er-refresh-etags extension)
+                                        ;ad-do-it))))
 
-;(defun er-refresh-etags (&optional extension)
-  ;"Run etags on all peer files in current dir and reload them silently."
-  ;(interactive)
-  ;(shell-command
-    ;(format "etags *.%s" (or extension "el")))
+                                        ;(defun er-refresh-etags (&optional extension)
+                                        ;"Run etags on all peer files in current dir and reload them silently."
+                                        ;(interactive)
+                                        ;(shell-command
+                                        ;(format "etags *.%s" (or extension "el")))
   ;;; (format "find %s -type f -regex '.*\.\\(c\\|h\\|el\\|scm\\)' | xargs etags -f %sTAGS" dir-name dir-name))
-  ;(let ((tags-revert-without-query t))  ; don't query, revert silently
-    ;(visit-tags-table default-directory nil)))
+                                        ;(let ((tags-revert-without-query t))  ; don't query, revert silently
+                                        ;(visit-tags-table default-directory nil)))
 
-;(defadvice previous-line (before next-line-at-end
-                                 ;(&optional arg try-vscroll))
-           ;"Insert an empty line when moving up from the top line."
-           ;(if (and next-line-add-newlines (= arg 1)
-                    ;(save-excursion (beginning-of-line) (bobp)))
-             ;(progn
-               ;(beginning-of-line)
-               ;(newline))))
+                                        ;(defadvice previous-line (before next-line-at-end
+                                        ;(&optional arg try-vscroll))
+                                        ;"Insert an empty line when moving up from the top line."
+                                        ;(if (and next-line-add-newlines (= arg 1)
+                                        ;(save-excursion (beginning-of-line) (bobp)))
+                                        ;(progn
+                                        ;(beginning-of-line)
+                                        ;(newline))))
 
-;(ad-activate 'previous-line)
+                                        ;(ad-activate 'previous-line)
 
 ;; ibus support for linux like ubuntu
 (cond
-  ((eq system-type 'cygwin) (
- (add-hook 'after-init-hook 'ibus-mode-on)
- (global-set-key (kbd "C-=") 'ibus-toggle) ;;这里既是绑定上面设置的C+=快捷键到ibus中
+ ((eq system-type 'cygwin) (
+                            (add-hook 'after-init-hook 'ibus-mode-on)
+                            (global-set-key (kbd "C-=") 'ibus-toggle) ;;这里既是绑定上面设置的C+=快捷键到ibus中
  ;;; Change cursor color depending on IBus status
- (setq ibus-cursor-color '("red" "blue" "limegreen"))))
-  nil
-)
+                            (setq ibus-cursor-color '("red" "blue" "limegreen"))))
+ nil
+ )
 
 ;;Add the undo-tree support
-;(global-undo-tree-mode)
+                                        ;(global-undo-tree-mode)
 
 ;;Add for the Evil support
 (evil-mode 1)
@@ -96,13 +98,13 @@
 (setq evil-normal-state-cursor '("blue" box))
 
 ;;Add support for evil-surround
-;(global-surround-mode 1)
+                                        ;(global-surround-mode 1)
 
 ;;cmdT plugin config
 (setq helm-ff-lynx-style-map nil
       helm-input-idle-delay 0.1
       helm-idle-delay 0.1
-)
+      )
 
 ;; pymacs
 (autoload 'pymacs-apply "pymacs")
@@ -118,7 +120,7 @@
 (setq ropemacs-enable-autoimport t)
 
 
-;(require 'pycomplete)
+                                        ;(require 'pycomplete)
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 (setq interpreter-mode-alist(cons '("python" . python-mode)
@@ -131,18 +133,18 @@
 (unless window-system
   (when (getenv "DISPLAY")
 
-   ;; Callback for when user cuts
+    ;; Callback for when user cuts
     (defun xsel-cut-function (text &optional push)
     ;;; Insert text to temp-buffer, and "send" content to xsel stdin
-    (with-temp-buffer
-    (insert text)
-    (cond
-     ((eq system-type 'cygwin) (set 'cmd "getclip"))
-     ((eq system-type 'darwin) (set 'cmd "pbcopy"))
-     (t (set 'cmd "xsel -ob"))
-     )
-    (message "copy content to clipboard")
-    (call-process-region (point-min) (point-max) cmd nil 0 nil "--clipboard" "--input")))
+      (with-temp-buffer
+        (insert text)
+        (cond
+         ((eq system-type 'cygwin) (set 'cmd "getclip"))
+         ((eq system-type 'darwin) (set 'cmd "pbcopy"))
+         (t (set 'cmd "xsel -ob"))
+         )
+        (message "copy content to clipboard")
+        (call-process-region (point-min) (point-max) cmd nil 0 nil "--clipboard" "--input")))
 
     ;;; Call back for when user pastes
     (defun xsel-paste-function()
@@ -150,15 +152,15 @@
     ;;; from the top of the kill-ring (car kill-ring), then return
     ;;; it. Else, nil is returned, so whatever is in the top of the
     ;;; kill-ring will be used.
-    (cond
-     ((eq system-type 'cygwin) (set 'cmd "getclip"))
-     ((eq system-type 'darwin) (set 'cmd "pbpaste"))
-     (t (set 'cmd "xsel -ob"))
-     )
-    (message "paste content from clipboard")
-    (let ((xsel-output (shell-command-to-string (concat cmd  " --clipboard --output"))))
-    (unless (string= (car kill-ring) xsel-output)
-    xsel-output )))
+      (cond
+       ((eq system-type 'cygwin) (set 'cmd "getclip"))
+       ((eq system-type 'darwin) (set 'cmd "pbpaste"))
+       (t (set 'cmd "xsel -ob"))
+       )
+      (message "paste content from clipboard")
+      (let ((xsel-output (shell-command-to-string (concat cmd  " --clipboard --output"))))
+        (unless (string= (car kill-ring) xsel-output)
+          xsel-output )))
     ;; Idea from
     ;; http://shreevatsa.wordpress.com/2006/10/22/emacs-copypaste-and-x/
     ;; http://www.mail-archive.com/help-gnu-emacs@gnu.org/msg03577.html
@@ -167,28 +169,28 @@
     (defun copy-to-x-clipboard ()
       (interactive)
       (if (region-active-p)
-        (progn
-          ; my clipboard manager only intercept CLIPBOARD
-          (shell-command-on-region (region-beginning) (region-end)
-                                   (cond
-                                     ((eq system-type 'cygwin) "putclip")
-                                     ((eq system-type 'darwin) "pbcopy")
-                                     (t "xsel -ib")
+          (progn
+                                        ; my clipboard manager only intercept CLIPBOARD
+            (shell-command-on-region (region-beginning) (region-end)
+                                     (cond
+                                      ((eq system-type 'cygwin) "putclip")
+                                      ((eq system-type 'darwin) "pbcopy")
+                                      (t "xsel -ib")
+                                      )
                                      )
-                                   )
-          (message "Yanked region to clipboard!")
-          (deactivate-mark))
+            (message "Yanked region to clipboard!")
+            (deactivate-mark))
         (message "No region active; can't yank to clipboard!")))
 
     (defun paste-from-x-clipboard()
       (interactive)
       (shell-command
-        (cond
-          ((eq system-type 'cygwin) "getclip")
-          ((eq system-type 'darwin) "pbpaste")
-          (t "xsel -ob")
-          )
-        1))
+       (cond
+        ((eq system-type 'cygwin) "getclip")
+        ((eq system-type 'darwin) "pbpaste")
+        (t "xsel -ob")
+        )
+       1))
 
     ;; Attach callbacks to hooks
     (setq interprogram-cut-function 'xsel-cut-function)
@@ -202,17 +204,17 @@
       erc-user-full-name "zhkzyth")
 (erc-autojoin-mode 1)
 (setq erc-autojoin-channels-alist
- '((
-   "oftc.net"
-   "#debian-zh"
-   "#emacs-cn"
-       )))
+      '((
+         "oftc.net"
+         "#debian-zh"
+         "#emacs-cn"
+         )))
 (erc-match-mode 1)
 (setq erc-keywords '("emacs" "python"))
 (setq erc-pals '("rms"))
 (setq erc-ignore-list nil)
 (setq erc-hide-list
- '("JOIN" "PART" "QUIT" "MODE"))
+      '("JOIN" "PART" "QUIT" "MODE"))
 
 ;;;evil-leader support
 (evil-leader/set-leader ",")
@@ -235,12 +237,38 @@
       '(("oftc.net"                 ; debian.org 是它的别名
          "#debian-zh"
          "#emacs-cn")
-          ("freenode.net"
-           "#emacs"
-           "#ubuntu-cn"
-           "#archlinux")
-          ))
+        ("freenode.net"
+         "#emacs"
+         "#ubuntu-cn"
+         "#archlinux")
+        ))
 
 (setq erc-ignore-list nil)
 (setq erc-hide-list
       '("JOIN" "PART" "QUIT" "MODE"))
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; FIXME: Not work as expected
+;;; GLOBAL + Speedbar mode
+;; (setq load-path (cons "/path/to/gtags.el" load-path))
+
+;; (autoload 'gtags-mode "gtags" "" t)
+;;; auto enable the gtags mode on c mode
+;; (add-hook 'c-mode-hook
+          ;; '(lambda ()
+             ;; (gtags-mode t)))
+
+;; (add-hook 'c++-mode-hook
+          ;; '(lambda ()
+             ;; (gtags-mode t)))
+
+;;;; init for sr-speedbar 
+;;;  FIXME in shared server mode
+;(add-hook 'after-init-hook '(lambda () (sr-speedbar-toggle)));;开启程序即启用
+
+
+
+
+;;;;; auto erlang mode
+(setq auto-mode-alist (cons '("\\.erl$" . erlang-mode) auto-mode-alist))

@@ -1,0 +1,96 @@
+* What is this?
+  erlmode intends to replace the erlang-mode from OTP as a major-mode for
+  editing Erlang code in Emacs that Just Works(tm).
+
+  It should have sane defaults and require as little setup as possible. The
+  idea is to use pure elisp for as many features as possible, instead of
+  relying on external tools like ctags or a running Erlang VM.
+
+  For things like debugging, compiling, running tests, etc. you do however need
+  a running node, porting over the required functionality from Distel needed
+  for these things are in the works.
+
+* Install
+#+BEGIN_EXAMPLE
+  (add-to-list 'load-path "/path/to/erlmode-root/")
+  (require 'erlmode-start)
+#+END_EXAMPLE
+
+  To activate the auto-complete-mode integration:
+#+BEGIN_EXAMPLE
+  (require 'ac-erlmode)
+#+END_EXAMPLE
+
+* What it gives you
+  - You should not have to specify an erlang-root-dir
+  - You will have automagic 'tags' support, using M-. and M-, you will be able
+    to jump to definitions of various Erlang language constructs, including:
+    - functions (local, external, imported, etc.)
+    - records
+    - macros
+    - header files
+    - modules
+  - Some indentation fixes and breakages for nicely aligning various parens and
+    commas, etc.
+  - auto-complete-mode integration. Somewhat context aware. Completion of:
+    - functions (local, external, imported, internal and external bifs)
+    - records
+    - macros
+    - modules
+    - keywords and operators
+  - hippie-expand integration. Not as context aware. Completion of:
+    - external functions and external bifs
+  - Probably other things I'm forgetting now.
+
+* Bindings
+#+BEGIN_EXAMPLE
+  M-.      -- jump to source
+  M-,      -- jump back from source
+  C-c C-f  -- ido file-listing of project modules
+#+END_EXAMPLE
+
+* What's planned
+  Apart from having a huge todo list the things closest in the future is an
+  eldoc version for Erlang code.
+  
+** Erlang VM runtime interaction
+   Elisp parts of Distel that is needed for communicating with an Erlang node
+   will be moved over into erlmode to provide a way of communicating with a node
+   that will run.
+
+* Notes
+  To provide the code jumping features this mode tries to guess a project root
+  and index relevant files. One codebase at work I'm trying this out on
+  contains ~3800 .erl and .hrl files, indexing that takes around 1.4s with the
+  SSD I'm running. If you're running an old mechanical disk it should take more
+  time, together with indexing the OTP modules it might take several
+  seconds. This beats having to (successfully) compile your code base to be
+  able to use debug info from beam files.
+
+  If this indexing time seems to be an issue I'll probably move the incremental
+  indexing plans up the todo list.
+
+  Yes, this is not the academic way of doing things. The parsing is ad-hoc and
+  ugly and simple guesses most of the time, but most things seem to work out of
+  the box. Until I get around to finishing the semantic wisent parser for
+  Erlang code this is the way it will work.
+
+* Bugs?
+  Most likely lots of them.
+
+* Manifest
+#+BEGIN_EXAMPLE
+  elisp/contrib/              -- Various extras
+  elisp/contrib/ac-erlmode.el -- auto-complete-mode integration
+  elisp/contrib/he-erlmode.el -- hippie-expand integration
+  elisp/erlang-mode/          -- OTP erlang-mode modules
+  elisp/erl-complete.el       -- Completion backend
+  elisp/erl-helpers.el        -- Various helper functions
+  elisp/erl-index.el          -- Find project roots and index relevant files
+  elisp/erl-jump.el           -- Find source definitions and navigate to them
+  elisp/erl-legacy.el         -- Setup of erlang-mode
+  elisp/erlmode.el            --
+  elisp/erl-otp.el            -- Find OTP installation and setup paths
+  elisp/erl-parse.el          -- Parse files for source definitions
+  erlmode-start.el            -- Main module from where everything is loaded
+#+END_EXAMPLE
