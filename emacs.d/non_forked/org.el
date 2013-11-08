@@ -1,22 +1,24 @@
 ;;; org-mode
 
 (require 'org)
+
+;; org-mode 設定
+(require 'org-crypt)
+
+;; 當被加密的部份要存入硬碟時，自動加密回去
+(org-crypt-use-before-save-magic)
+
+;; 設定要加密的 tag 標籤為 secret
+(setq org-crypt-tag-matcher "secret")
+
+;; 避免 secret 這個 tag 被子項目繼承 造成重複加密
+;; (但是子項目還是會被加密喔)
+(setq org-tags-exclude-from-inheritance (quote ("secret")))
+
+;; 用於加密的 GPG 金鑰
+;; 可以設定任何 ID 或是設成 nil 來使用對稱式加密 (symmetric encryption)
+(setq org-crypt-key nil)
+
+;; 映射文件类型
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
-(define-key global-map "\C-cl" 'org-store-link)
-(define-key global-map "\C-ca" 'org-agenda)
-(setq org-log-done t)
 
-;; (setq org-agenda-files (list "~/org/home.org"
-;;                              "~/org/inbox.org"
-;;                              "~/org/emacsbook.org"))
-
-(setq org-agenda-files (list "~/org/book/home.org"
-                             "~/org/book/work.org"
-                             "~/org/book/emacsbook.org"))
-
-;; (global-set-key (kbd "C-c r") 'remember)
-;; (add-hook 'remember-mode-hook 'org-remember-apply-template)
-;; (setq org-remember-templates
-;;       '((?n "* %U %?" "~/org/inbox.org")))
-;; (setq remember-annotation-functions '(org-remember-annotation))
-;; (setq remember-handler-functions '(org-remember-handler))

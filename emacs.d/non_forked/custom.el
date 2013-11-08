@@ -272,3 +272,12 @@
 
 ;;;;; auto erlang mode
 (setq auto-mode-alist (cons '("\\.erl$" . erlang-mode) auto-mode-alist))
+
+
+;;;;; handy tools 
+(defun kill-other-buffers ()
+  "Kill all other buffers."
+  (interactive)
+  (mapc 'kill-buffer 
+        (delq (current-buffer) 
+              (remove-if-not 'buffer-file-name (buffer-list)))))
