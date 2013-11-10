@@ -63,6 +63,8 @@
 ;; (load "non_forked/gtags")
 ;;;; erlang mode
 (load "non_forked/erlang-bk")
+;;;; add template support
+(load "non_forked/template")
 
 ;;
 (vendor 'ruby-mode)

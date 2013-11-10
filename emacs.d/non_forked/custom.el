@@ -90,7 +90,7 @@
  )
 
 ;;Add the undo-tree support
-                                        ;(global-undo-tree-mode)
+;(global-undo-tree-mode)
 
 ;;Add for the Evil support
 (evil-mode 1)
@@ -98,7 +98,7 @@
 (setq evil-normal-state-cursor '("blue" box))
 
 ;;Add support for evil-surround
-                                        ;(global-surround-mode 1)
+;(global-surround-mode 1)
 
 ;;cmdT plugin config
 (setq helm-ff-lynx-style-map nil
@@ -263,7 +263,7 @@
           ;; '(lambda ()
              ;; (gtags-mode t)))
 
-;;;; init for sr-speedbar 
+;;;; init for sr-speedbar
 ;;;  FIXME in shared server mode
 ;(add-hook 'after-init-hook '(lambda () (sr-speedbar-toggle)));;开启程序即启用
 
@@ -274,10 +274,14 @@
 (setq auto-mode-alist (cons '("\\.erl$" . erlang-mode) auto-mode-alist))
 
 
-;;;;; handy tools 
+;;;;; handy tools
 (defun kill-other-buffers ()
   "Kill all other buffers."
   (interactive)
-  (mapc 'kill-buffer 
-        (delq (current-buffer) 
+  (mapc 'kill-buffer
+        (delq (current-buffer)
               (remove-if-not 'buffer-file-name (buffer-list)))))
+
+;;;;; disable the debug error trace.it's just annoying
+(setq debug-on-error nil)
+(setq stack-trace-on-error nil)
