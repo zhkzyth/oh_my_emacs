@@ -281,7 +281,3 @@
   (mapc 'kill-buffer
         (delq (current-buffer)
               (remove-if-not 'buffer-file-name (buffer-list)))))
-
-
-
-

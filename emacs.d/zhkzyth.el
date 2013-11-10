@@ -65,6 +65,9 @@
 (load "non_forked/erlang-bk")
 ;;;; add template support
 (load "non_forked/template")
+;;;; add smart buffer clean support
+(load "non_forked/midnight")
+
 
 ;;
 (vendor 'ruby-mode)
