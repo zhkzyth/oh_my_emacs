@@ -27,12 +27,6 @@
 ;; Line-wrapping
 (set-default 'fill-column 80)
 
-;; Prevent the annoying beep on errors and disable the errors
-(setq visible-bell t)
-(setq debug-on-error nil)
-(setq stack-trace-on-error nil)
-(setq ring-bell-function 'ignore)
-
 ;; Make sure all backup files only live in one place
 (setq backup-directory-alist '(("." . "~/.emacs.d/backups")))
 

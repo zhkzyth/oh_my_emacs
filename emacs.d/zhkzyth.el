@@ -160,7 +160,7 @@
 (vendor 'less-mode)
 ;;add flymake mode support
 (vendor 'flymake)
-;;;; 
+;;;;
 (vendor 'ruby-electric 'ruby-electric-mode)
 ;;;; erlang mode
 ;;; FIXME a bug
@@ -177,3 +177,9 @@
 
 (setq custom-file "non_forked/custom.el")
 (load custom-file 'noerror) ;;well , the color theme is not the one~
+
+;; Prevent the annoying beep on errors and disable the errors
+(setq visible-bell t)
+(setq stack-trace-on-error nil)
+(setq ring-bell-function 'ignore)
+(setq debug-on-error nil)
