@@ -281,7 +281,3 @@
   (mapc 'kill-buffer
         (delq (current-buffer)
               (remove-if-not 'buffer-file-name (buffer-list)))))
-
-;;;;; disable the debug error trace.it's just annoying
-(setq debug-on-error nil)
-(setq stack-trace-on-error nil)
