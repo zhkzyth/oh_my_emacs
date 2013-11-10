@@ -2,6 +2,9 @@
 
 (iswitchb-mode 1)
 
+;; key binds for iswitchb-buffer 
+(global-set-key (kbd "C-c C-b") 'iswitchb-buffer)
+
 ;; Common ignores
 (add-to-list 'iswitchb-buffer-ignore "^ ")
 (add-to-list 'iswitchb-buffer-ignore "*ECB")
@@ -18,4 +21,5 @@
 
 ;; Case sensitivity
 ;; (setq iswitchb-case nil) ; nil for case sensitive
+
 
