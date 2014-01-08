@@ -106,6 +106,8 @@
       helm-idle-delay 0.1
       )
 
+
+;;; TODO move the python related to isolate file
 ;; pymacs
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
@@ -120,11 +122,14 @@
 (setq ropemacs-enable-autoimport t)
 
 
-                                        ;(require 'pycomplete)
+;(require 'pycomplete)
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
-(setq interpreter-mode-alist(cons '("python" . python-mode)
+(setq interpreter-mode-alist (cons '("python" . python-mode)
                                   interpreter-mode-alist))
+(add-hook 'python-mode-hook
+ (lambda ()
+ (define-key py-mode-map "\C-c\C-b" nil)))
 
 ;; If emacs is run in a terminal, the clipboard- functions have no
 ;; effect. Instead, we use of xsel, see

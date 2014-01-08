@@ -22,3 +22,7 @@
 ;; 映射文件类型
 (add-to-list 'auto-mode-alist '("\\.org$" . org-mode))
 
+(setq org-todo-keywords
+      '((sequence "TODO" "|" "DONE" )))
+
+(setq org-log-done 'time)

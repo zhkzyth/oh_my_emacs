@@ -67,7 +67,10 @@
 (load "non_forked/template")
 ;;;; add smart buffer clean support
 (load "non_forked/midnight")
-
+;;;; python-mode support
+;(load "non_forked/python-mode")
+;;;; auto discover encoding
+(load "non_forked/unicad")
 
 ;;
 (vendor 'ruby-mode)
@@ -168,6 +171,8 @@
 ;;;; erlang mode
 ;;; FIXME a bug
 ;(vendor 'erlmode-start)
+;;; slime mode
+(vendor 'slime)
 
 ;;;; NOTE: need to complie the source code of auctex,
 ;;;; so may do this when we use it actually
@@ -179,7 +184,7 @@
 (load "non_forked/python-pylint")
 
 (setq custom-file "non_forked/custom.el")
-(load custom-file 'noerror) ;;well , the color theme is not the one~
+ (load custom-file 'noerror) ;;well , the color theme is not the one~
 
 ;; Prevent the annoying beep on errors and disable the errors
 (setq visible-bell t)

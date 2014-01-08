@@ -112,3 +112,11 @@
 
 ;; for sr-speedbar-mode
 (global-set-key (kbd "<f5>") 'sr-speedbar-toggle)
+
+
+
+;; Custom Keybinds
+(add-hook 'python-mode-hook
+        (lambda ()
+                (local-set-key (kbd "<f4>") 'pep8)
+        ))

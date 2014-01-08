@@ -677,7 +677,7 @@ Currently-active file is at the head of the list.")
   ;; python-mode, which forces us to rebind to special commands
   (define-key py-mode-map "\C-xnd"    'py-narrow-to-defun)
   ;; information
-  ;; (define-key py-mode-map "\C-c\C-b" 'py-submit-bug-report)
+  (define-key py-mode-map "\C-c\C-b" 'py-submit-bug-report)
   (define-key py-mode-map "\C-c\C-v" 'py-version)
   (define-key py-mode-map "\C-c\C-w" 'py-pychecker-run)
   ;; shadow global bindings for newline-and-indent w/ the py- version.
