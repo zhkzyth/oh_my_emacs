@@ -286,3 +286,70 @@
   (mapc 'kill-buffer
         (delq (current-buffer)
               (remove-if-not 'buffer-file-name (buffer-list)))))
+
+(setq ansi-color-names-vector
+       ["black" "tomato" "PaleGreen2" "gold1"
+              "DeepSkyBlue1" "MediumOrchid1" "cyan" "white"])
+(setq ansi-color-map (ansi-color-make-color-map)) ;;;this helped
+
+
+;;;;;;;;;;;;;;; hack for shell mode color
+;;;;;;;;;;;;;;; FIXME not work!!!
+;; ;; Use variable width font faces in current buffer
+;; (defun my-buffer-face-mode-variable ()
+;; ;;   "Set font to a variable width (proportional) fonts in current buffer"
+;;   (interactive)
+;;   (setq buffer-face-mode-face '(:family "Menlo For Powerline" :height 100))
+;;   (text-scale-adjust 1)
+;;    (buffer-face-mode))
+
+;; (setq system-uses-terminfo nil)
+;; (add-hook 'term-mode-hook
+;;           '(lambda ()
+;;              (linum-mode 0)
+;;              (term-set-escape-char ?\C-z)
+;;              (term-set-escape-char ?\C-x)
+;;              (define-key term-raw-map "\C-c" 'term-interrupt-subjob)
+;;              (define-key term-raw-map (kbd "M-x") 'execute-extended-command)
+;;              (setq autopair-dont-activate t)
+;;              (setq ac-auto-start nil)
+;;              (visual-line-mode -1)
+;;              ;; (my-buffer-face-mode-variable)
+;;              ))
+
+;; (defun my-term-paste (&optional string)
+;;   (interactive)
+;;   (process-send-string
+;;    (get-buffer-process (current-buffer))
+;;    (if string string (current-kill 0))))
+
+;; (defun my-term-pasteboard-paste ()
+;;   (interactive)
+;;   (process-send-string
+;;    (get-buffer-process (current-buffer))
+;;    (ns-get-pasteboard)))
+
+;; (add-hook 'term-exec-hook '(lambda ()
+;;                              (set-buffer-process-coding-system 'utf-8-unix 'utf-8-unix)
+;;                              (goto-address-mode)
+;;                              (define-key term-raw-map (kbd "C-y") 'my-term-paste)
+;;                              (define-key term-raw-map (kbd "s-v") 'my-term-pasteboard-paste)
+;;                              (let ((base03 "#002b36")
+;;                                    (base02 "#073642")
+;;                                    (base01 "#586e75")
+;;                                    (base00 "#657b83")
+;;                                    (base0 "#839496")
+;;                                    (base1 "#93a1a1")
+;;                                    (base2 "#eee8d5")
+;;                                    (base3 "#fdf6e3")
+;;                                    (yellow "#b58900")
+;;                                    (orange "#cb4b16")
+;;                                    (red "#dc322f")
+;;                                    (magenta "#d33682")
+;;                                    (violet "#6c71c4")
+;;                                    (blue "#268bd2")
+;;                                    (cyan "#2aa198")
+;;                                    (green "#859900"))
+;;                                (setq ansi-term-color-vector
+;;                                      (vconcat `(unspecified ,base02 ,red ,green ,yellow ,blue
+;;                                                             ,magenta ,cyan ,base2))))))

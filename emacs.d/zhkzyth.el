@@ -126,6 +126,8 @@
 (vendor 'revbufs       'revbufs)
 ;;
 (vendor 'buffer-move)
+;; simple php editing mode
+(vendor 'php-mode)
 ;;
 ;;(vendor 'ibus)
 ;;add the visual tree support
