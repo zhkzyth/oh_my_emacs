@@ -71,6 +71,14 @@
 ;(load "non_forked/python-mode")
 ;;;; auto discover encoding
 (load "non_forked/unicad")
+;;;; support protobuf syntax
+(load "non_forked/protobuf-mode")
+;;;; php mode
+(load "non_forked/php-mode")
+;;;; nginx mode
+(load "non_forked/nginx-mode")
+;;;; dash related
+(load "non_forked/dash-at-point")
 
 ;;
 (vendor 'ruby-mode)
@@ -126,8 +134,6 @@
 (vendor 'revbufs       'revbufs)
 ;;
 (vendor 'buffer-move)
-;; simple php editing mode
-(vendor 'php-mode)
 ;;
 ;;(vendor 'ibus)
 ;;add the visual tree support
@@ -175,6 +181,8 @@
 ;(vendor 'erlmode-start)
 ;;; slime mode
 (vendor 'slime)
+;;; GO mode
+(vendor 'go-mode)
 
 ;;;; NOTE: need to complie the source code of auctex,
 ;;;; so may do this when we use it actually
@@ -186,10 +194,13 @@
 (load "non_forked/python-pylint")
 
 (setq custom-file "non_forked/custom.el")
- (load custom-file 'noerror) ;;well , the color theme is not the one~
+(load custom-file 'noerror) ;;well , the color theme is not the one~
 
 ;; Prevent the annoying beep on errors and disable the errors
 (setq visible-bell t)
 (setq stack-trace-on-error nil)
 (setq ring-bell-function 'ignore)
 (setq debug-on-error nil)
+
+;; enable cogre mode for drawing follow charts
+(cogre-mode 1)

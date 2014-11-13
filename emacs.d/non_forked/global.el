@@ -52,5 +52,19 @@
 (setq ispell-list-command "list")
 (setq ispell-extra-args '("--sug-mode=ultra"))
 
+;; TODO 11.13 查看这里的配置
+;; ;; add support for off screen paren matching highlight
+;; (defadvice show-paren-function
+;;   (after show-matching-paren-offscreen activate)
+;;   "If the matching paren is offscreen, show the matching line in the
+;;         echo area. Has no effect if the character before point is not of
+;;         the syntax class ')'."
+;;   (interactive)
+;;   (let* ((cb (char-before (point)))
+;;          (matching-text (and cb
+;;                              (char-equal (char-syntax cb) ?\) )
+;;                              (blink-matching-open))))
+;;     (when matching-text (message matching-text))))
+
 ;; zap-up-to-char, forward-to-word, backward-to-word, etc
 (require 'misc)
