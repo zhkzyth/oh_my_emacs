@@ -107,29 +107,25 @@
       )
 
 
-;;; TODO move the python related to isolate file
-;; pymacs
+;;; pymacs
 (autoload 'pymacs-apply "pymacs")
 (autoload 'pymacs-call "pymacs")
 (autoload 'pymacs-eval "pymacs" nil t)
 (autoload 'pymacs-exec "pymacs" nil t)
 (autoload 'pymacs-load "pymacs" nil t)
 (autoload 'pymacs-autoload "pymacs")
-;;(eval-after-load "pymacs"
-;;  '(add-to-list 'pymacs-load-path YOUR-PYMACS-DIRECTORY"))
 
 (pymacs-load "ropemacs" "rope-")
 (setq ropemacs-enable-autoimport t)
 
+;;;
+(setq py-load-pymacs-p t)
 
-;(require 'pycomplete)
+(require 'pycomplete)
 (setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
 (autoload 'python-mode "python-mode" "Python editing mode." t)
 (setq interpreter-mode-alist (cons '("python" . python-mode)
                                   interpreter-mode-alist))
-(add-hook 'python-mode-hook
- (lambda ()
- (define-key py-mode-map "\C-c\C-b" nil)))
 
 ;; If emacs is run in a terminal, the clipboard- functions have no
 ;; effect. Instead, we use of xsel, see
@@ -367,3 +363,19 @@
   (defun track-mouse (e))
   (setq mouse-sel-mode t)
 )
+
+;; Prevent the annoying beep on errors and disable the errors
+(setq visible-bell t)
+(setq stack-trace-on-error nil)
+(setq ring-bell-function 'ignore)
+(setq debug-on-error nil)
+
+;; enable cogre mode for drawing follow charts
+;; (cogre-mode 1)
+
+(setq py-shell-name "ipython")
+
+;; TODO config for auto-complete
+
+
+;; config for pyflymake

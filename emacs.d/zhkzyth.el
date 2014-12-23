@@ -67,8 +67,6 @@
 (load "non_forked/template")
 ;;;; add smart buffer clean support
 (load "non_forked/midnight")
-;;;; python-mode support
-;(load "non_forked/python-mode")
 ;;;; auto discover encoding
 (load "non_forked/unicad")
 ;;;; support protobuf syntax
@@ -79,6 +77,8 @@
 (load "non_forked/nginx-mode")
 ;;;; dash related
 (load "non_forked/dash-at-point")
+;;;; php syntax check enhance version
+(load "non_forked/flymake-phpcs")
 
 ;;
 (vendor 'ruby-mode)
@@ -134,7 +134,7 @@
 (vendor 'revbufs       'revbufs)
 ;;
 (vendor 'buffer-move)
-;;
+
 ;;(vendor 'ibus)
 ;;add the visual tree support
 ;;(vendor 'tree-mode)
@@ -150,6 +150,8 @@
 ;;auto-complete
 (vendor 'auto-complete)
 
+;; load python-mode
+(vendor 'python-mode)
 ;;hack for pymacs
 (vendor 'pymacs)
 ;;pycomplete
@@ -188,19 +190,10 @@
 ;;;; so may do this when we use it actually
 ;;(vendor 'auctex)
 
-;;; python lint
-;;; TODO make clear why the position so important
+;;;; python lint
+;;;; TODO make clear why the position so important
 (load "non_forked/python-pep8")
 (load "non_forked/python-pylint")
 
 (setq custom-file "non_forked/custom.el")
 (load custom-file 'noerror) ;;well , the color theme is not the one~
-
-;; Prevent the annoying beep on errors and disable the errors
-(setq visible-bell t)
-(setq stack-trace-on-error nil)
-(setq ring-bell-function 'ignore)
-(setq debug-on-error nil)
-
-;; enable cogre mode for drawing follow charts
-(cogre-mode 1)
