@@ -78,7 +78,9 @@
 ;;;; dash related
 (load "non_forked/dash-at-point")
 ;;;; php syntax check enhance version
-(load "non_forked/flymake-phpcs")
+;; (load "non_forked/flymake-phpcs")
+;;; prettify code related
+(load "non_forked/web-beautify")
 
 ;;
 (vendor 'ruby-mode)
