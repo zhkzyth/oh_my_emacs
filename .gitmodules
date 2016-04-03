@@ -78,7 +78,7 @@
 	url = https://github.com/nex3/haml-mode.git
 [submodule "emacs.d/vendor/revbufs"]
 	path = emacs.d/vendor/revbufs
-	url = https://github.com/emacsmirror/revbufs.git
+	url = https://github.com/zhkzyth/mirror-emacs--revbufs.git 
 [submodule "emacs.d/vendor/textmate.el"]
 	path = emacs.d/vendor/textmate.el
 	url = https://github.com/defunkt/textmate.el.git
