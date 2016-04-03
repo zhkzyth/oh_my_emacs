@@ -7,3 +7,5 @@ emacs.d/tramp
 emacs.d/rmm5t/private.el
 emacs.d/.org-id-locations
 *.elc
+
+recentf
