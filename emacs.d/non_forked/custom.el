@@ -108,24 +108,24 @@
 
 
 ;;; pymacs
-(autoload 'pymacs-apply "pymacs")
-(autoload 'pymacs-call "pymacs")
-(autoload 'pymacs-eval "pymacs" nil t)
-(autoload 'pymacs-exec "pymacs" nil t)
-(autoload 'pymacs-load "pymacs" nil t)
-(autoload 'pymacs-autoload "pymacs")
+;;(autoload 'pymacs-apply "pymacs")
+;;(autoload 'pymacs-call "pymacs")
+;;(autoload 'pymacs-eval "pymacs" nil t)
+;;(autoload 'pymacs-exec "pymacs" nil t)
+;;(autoload 'pymacs-load "pymacs" nil t)
+;;(autoload 'pymacs-autoload "pymacs")
 
-(pymacs-load "ropemacs" "rope-")
-(setq ropemacs-enable-autoimport t)
+;;(pymacs-load "ropemacs" "rope-")
+;;(setq ropemacs-enable-autoimport t)
 
 ;;;
-(setq py-load-pymacs-p t)
+;;(setq py-load-pymacs-p t)
 
-(require 'pycomplete)
-(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
-(autoload 'python-mode "python-mode" "Python editing mode." t)
-(setq interpreter-mode-alist (cons '("python" . python-mode)
-                                  interpreter-mode-alist))
+;;(require 'pycomplete)
+;;(setq auto-mode-alist (cons '("\\.py$" . python-mode) auto-mode-alist))
+;;(autoload 'python-mode "python-mode" "Python editing mode." t)
+;;(setq interpreter-mode-alist (cons '("python" . python-mode)
+;;                                  interpreter-mode-alist))
 
 ;; If emacs is run in a terminal, the clipboard- functions have no
 ;; effect. Instead, we use of xsel, see

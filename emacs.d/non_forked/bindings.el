@@ -1,5 +1,16 @@
 ;;; Global key bindigns
 
+;; try to fix alt key not working for keyboard
+;; key bindings
+(when (eq system-type 'darwin) ;; mac specific settings
+  (setq mac-option-modifier 'alt)
+  (setq mac-command-modifier 'meta)
+  (global-set-key [kp-delete] 'delete-char) ;; sets fn-delete to be right-delete
+  )
+
+;; Window navigation
+(windmove-default-keybindings 'meta)
+
 ;;
 (global-set-key (kbd "<f1>") 'shell)
 (global-set-key (kbd "<f2>") 'imenu)
@@ -17,11 +28,13 @@
 (global-set-key [(f9)]         (lambda () (interactive) (magit-status default-directory)))
 
 ;; Map the window manipulation keys to meta 0, 1, 2, o
-(global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
-(global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument
-(global-set-key (kbd "M-1") 'delete-other-windows) ; was digit-argument
-(global-set-key (kbd "M-0") 'delete-window) ; was digit-argument
-(global-set-key (kbd "M-o") 'other-window) ; was facemenu-keymap
+;; (global-set-key (kbd "M-3") 'split-window-horizontally) ; was digit-argument
+;; (global-set-key (kbd "M-2") 'split-window-vertically) ; was digit-argument
+;; (global-set-key (kbd "M-1") 'delete-other-windows) ; was digit-argument
+;; FIXME temp hack for Meta key not working as alt in pc keyboard =.=
+(global-set-key (kbd "£") 'split-window-horizontally) ; was digit-argument
+(global-set-key (kbd "™") 'split-window-vertically) ; was digit-argument
+(global-set-key (kbd "¡") 'delete-other-windows) ; was digit-argument
 
 ;; Replace dired's M-o
 (add-hook 'dired-mode-hook (lambda () (define-key dired-mode-map (kbd "M-o") 'other-window))) ; was dired-omit-mode
@@ -33,9 +46,6 @@
 (global-unset-key (kbd "C-x 1")) ; was delete-other-windows
 (global-unset-key (kbd "C-x 0")) ; was delete-window
 (global-unset-key (kbd "C-x o")) ; was other-window
-
-;; Window navigation
-(windmove-default-keybindings 'meta)
 
 ;; Window switch
 ;; window movement
@@ -119,4 +129,8 @@
 (add-hook 'python-mode-hook
         (lambda ()
                 (local-set-key (kbd "<f4>") 'pep8)
-        ))
+                ))
+
+
+;; for nerd comment
+(global-set-key (kbd "…") 'evilnc-comment-or-uncomment-lines)

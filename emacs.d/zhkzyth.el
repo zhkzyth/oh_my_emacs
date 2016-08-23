@@ -48,7 +48,7 @@
 (load "non_forked/shell-mode")
 (load "non_forked/hl-line")
 (load "non_forked/iswitchb")
-(load "non_forked/sr-speedbar")
+;;(load "non_forked/sr-speedbar")
 ;;; smart-compile
 (load "non_forked/smart-compile")
 ;;; for xcsope
@@ -155,9 +155,9 @@
 ;; load python-mode
 (vendor 'python-mode)
 ;;hack for pymacs
-(vendor 'pymacs)
+;;(vendor 'pymacs)
 ;;pycomplete
-(vendor 'pycomplete)
+;;(vendor 'pycomplete)
 
 ;;for the evil Project
 (vendor 'undo-tree)
@@ -199,3 +199,13 @@
 
 (setq custom-file "non_forked/custom.el")
 (load custom-file 'noerror) ;;well , the color theme is not the one~
+
+;; add theme solarized support
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/solarized")
+(load-theme 'solarized t)
+(set-terminal-parameter nil 'background-mode 'dark)
+
+;;; add support for jsx mode
+(add-to-list 'auto-mode-alist '("\\.js\\'" . jsx-mode))
+;; (autoload 'jsx-mode "jsx-mode" "JSX mode" t)
+(load "non_forked/jsx-mode")
