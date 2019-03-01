@@ -25,9 +25,6 @@
 [submodule "emacs.d/vendor/filladapt"]
 	path = emacs.d/vendor/filladapt
 	url = git://github.com/emacsmirror/filladapt.git
-[submodule "emacs.d/vendor/psvn"]
-	path = emacs.d/vendor/psvn
-	url = git://github.com/emacsmirror/psvn.git
 [submodule "emacs.d/vendor/yasnippet"]
 	path = emacs.d/vendor/yasnippet
 	url = git://github.com/emacsmirror/yasnippet.git
